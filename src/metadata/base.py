@@ -9,7 +9,7 @@ class MetadataProcessor(ABC):
     모든 포맷별 메타데이터 프로세서는 이 클래스를 상속받아야 합니다.
     """
     @abstractmethod
-    def read_metadata(self, file_path):
+    def read_metadata(self, file_path) -> Union[dict[str, str], None]:
         """
         파일에서 메타데이터를 읽습니다.
         :return: {'ymd': 'YYYY-MM-DD'} 또는 날짜 정보가 없으면 None
@@ -17,7 +17,7 @@ class MetadataProcessor(ABC):
         pass
 
     @abstractmethod
-    def write_metadata(self, file_path, new_datetime_str):
+    def write_metadata(self, file_path, new_datetime_str) -> bool:
         """
         파일에 새로운 날짜/시간 메타데이터를 씁니다.
         :param new_datetime_str: "YYYY:MM:DD HH:MM:SS" 형식의 문자열
